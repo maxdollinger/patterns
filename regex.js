@@ -1,14 +1,14 @@
 //find text between to HTML-Tags
 function findTags(str) {
-    const tagsAndContent = {};
+    const content = {};
 
     //search with regex for an opening and closing tag
     str.replace(/<([a-z]+).*?>(.*?)<\/\1>/gmi, (match, g1, g2) => {
-        /*instead of replacing the match store it in the tagsAndContent object with tag as key
-        and the value as an array so that multiple contents can be stored */
-        tagsAndContent[g1] ? tagsAndContent[g1].push(g2) : tagsAndContent[g1] = [g2];
+        /*instead of replacing the match store it in the content object with the tag as the key
+        and the conntent as the value. Values stored in an array due the possibility of multiple occurence */
+        content[g1] ? content[g1].push(g2) : content[g1] = [g2];
     } )
 
-    return tagsAndContent;
+    return content;
 }
 
